@@ -1,19 +1,19 @@
 const mongoose=require("mongoose")
 
-const InstructorSchema=mongoose.Schema({
+const UserSchema=mongoose.Schema({
     name:{type:String,required:true},
     email:{type:String,required:true},
     password:{type:String,required:true},
     age:{type:Number,required:true},
-    subject:{type:String,required:true},
+    role:{type:String,requires:true}
 },{
     versionKey:false
 })
 
 
-const InsrtuctorModel=mongoose.model("instructor",InstructorSchema)
+const UserModel=mongoose.model("user",UserSchema)
 
 
 module.exports={
-    InsrtuctorModel
+    UserModel
 }
