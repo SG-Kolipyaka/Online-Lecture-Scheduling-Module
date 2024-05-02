@@ -13,7 +13,7 @@ const auth=(req,res,next)=>{
                 res.status(200).send({"msg":"Please Login"}) 
             }
         }catch(er){
-            res.status(200).send({"msg":er.message}) 
+            res.status(200).send({"msg":"Wrong Credential"}) 
         }
     }else{
         res.status(200).send({"msg":"Please Login"}) 

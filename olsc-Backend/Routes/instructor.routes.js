@@ -1,4 +1,6 @@
 const {InsrtuctorModel}=require("../Models/instructor.models")
+const {AssignedModel}=require("../Models/courses.models")
+const {auth}=require("../Middlewares/auth")
 const {Router}=require("express")
 const jwt=require("jsonwebtoken")
 const bcrypt=require("bcrypt")
@@ -33,6 +35,16 @@ res.status(401).send({message:error.message})
     }
 })
 
+
+instructorRouter.get("/assigned/:id",auth,async(req,res)=>{
+    const {id}=req.params
+    try{
+const instructor=await AssignedModel.find({instructorId:id})
+res.status(200).send({message:"Instructor Fetched Successfully",data:instructor})
+    }catch(error){
+res.status(401).send({message:error.message})
+    }
+})
 
 
 instructorRouter.post("/login",async(req,res)=>{
