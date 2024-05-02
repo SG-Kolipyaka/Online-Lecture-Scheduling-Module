@@ -19,7 +19,7 @@ instructorRouter.post("/register",async(req,res)=>{
             })
         }
     }catch(er){
-        res.status(401).send({"msg":er})
+        res.status(401).send({"msg":er.message})
     }
 })
 
