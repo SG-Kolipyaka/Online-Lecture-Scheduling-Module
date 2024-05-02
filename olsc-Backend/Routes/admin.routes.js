@@ -1,21 +1,21 @@
-const {InsrtuctorModel}=require("../Models/instructor.models")
+const {AdminModel}=require("../Models/admin.models")
 const {Router}=require("express")
 const jwt=require("jsonwebtoken")
 const bcrypt=require("bcrypt")
-const instructorRouter=Router()
+const adminRouter=Router()
 
-instructorRouter.post("/register",async(req,res)=>{
-    const {name,email,age,password,subject}=req.body
+adminRouter.post("/register",async(req,res)=>{
+    const {name,email,age,password}=req.body
     
     try{
-        const finduser=await InsrtuctorModel.findOne({email})
+        const finduser=await AdminModel.findOne({email})
         if(finduser){
-            res.status(200).send({message:"Instructor already Registered Please Login"})
+            res.status(200).send({message:"admin already Registered Please Login"})
         }else{
             bcrypt.hash(password,5,async(err,hash)=>{
-                const user=InsrtuctorModel({name,email,age,password:hash,subject})
+                const user=AdminModel({name,email,age,password:hash})
                 await user.save()
-                res.status(200).send({message:"Instructor Registered Successfully"})
+                res.status(200).send({message:"admin Registered Successfully"})
             })
         }
     }catch(er){
@@ -24,10 +24,10 @@ instructorRouter.post("/register",async(req,res)=>{
 })
 
 
-instructorRouter.get("/getinstructors",async(req,res)=>{
+adminRouter.get("/getadmins",async(req,res)=>{
     try{
-const instructor=await InsrtuctorModel.find()
-res.status(200).send({message:"Instructor Fetched Successfully",data:instructor})
+const admin=await AdminModel.find()
+res.status(200).send({message:"admin Fetched Successfully",data:admin})
     }catch(error){
 res.status(401).send({message:error.message})
     }
@@ -35,14 +35,14 @@ res.status(401).send({message:error.message})
 
 
 
-instructorRouter.post("/login",async(req,res)=>{
+adminRouter.post("/login",async(req,res)=>{
     const {email,password}=req.body
     try{
-        const finduser=await InsrtuctorModel.findOne({email})
+        const finduser=await AdminModel.findOne({email})
         if(finduser){
             bcrypt.compare(password, finduser.password,(err,result)=>{
                 if(result){
-                    const token=jwt.sign({instructor:finduser.name,instructorId:finduser._id},"instructor");
+                    const token=jwt.sign({admin:finduser.name,adminId:finduser._id},"admin");
                    res.status(200).send({message:"Login Successfully","token":token})
                 }else{
                     res.status(200).send({message:"Wrong Credential"}) 
@@ -57,5 +57,5 @@ instructorRouter.post("/login",async(req,res)=>{
 })
 
 module.exports={
-    instructorRouter
+    adminRouter
 }

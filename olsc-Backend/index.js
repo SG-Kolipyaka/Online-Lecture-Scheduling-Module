@@ -1,7 +1,9 @@
 const express=require("express")
 const cors=require("cors")
 const { connection } = require("./db")
+const {adminRouter}=require("./Routes/admin.routes")
 const {instructorRouter}=require("./Routes/instructor.routes")
+const {courseRouter}=require("./Routes/courses.route")
 require('dotenv').config()
 const app=express()
 
@@ -9,6 +11,9 @@ const app=express()
 app.use(cors()) 
 app.use(express.json())
 app.use("/instructor",instructorRouter)
+app.use('/admins',adminRouter)
+app.use("/courses",courseRouter)
+
 
 app.get("/",async(req,res)=>{
     try{
