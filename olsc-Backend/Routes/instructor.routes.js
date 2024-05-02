@@ -24,6 +24,17 @@ instructorRouter.post("/register",async(req,res)=>{
 })
 
 
+instructorRouter.get("/getinstructors",async(req,res)=>{
+    try{
+const instructor=await InsrtuctorModel.find()
+res.status(200).send({"Message":"Instructor Fetched Successfully",data:instructor})
+    }catch(error){
+res.status(401).send({"Message":error.message})
+    }
+})
+
+
+
 instructorRouter.post("/login",async(req,res)=>{
     const {email,password}=req.body
     try{
