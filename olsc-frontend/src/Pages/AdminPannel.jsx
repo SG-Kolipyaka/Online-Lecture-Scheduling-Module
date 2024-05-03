@@ -20,7 +20,7 @@ const AdminPanel = () => {
 
   const fetchData = () => {
     const token = localStorage.getItem('token');
-    return axios.get("http://localhost:8080/courses/getcourses", {
+    return axios.get("https://online-backend-b35y.onrender.com/courses/getcourses", {
       headers: {
         Authorization: token
       }

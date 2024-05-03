@@ -56,7 +56,7 @@ const AssignLecture = () => {
   const [courses, setCourses] = useState([]);
 
   const fetchData = () => {
-    return axios.get("http://localhost:8080/user/getinstructors")
+    return axios.get("https://online-backend-b35y.onrender.com/user/getinstructors")
       .then((res) => {
         console.log(res.data.data);
         setData(res.data.data);
@@ -68,7 +68,7 @@ const AssignLecture = () => {
 
   const fetchcourseData = () => {
     const token = localStorage.getItem('token');
-    return axios.get("http://localhost:8080/courses/getcourses", {
+    return axios.get("https://online-backend-b35y.onrender.com/courses/getcourses", {
       headers: {
         Authorization: token
       }

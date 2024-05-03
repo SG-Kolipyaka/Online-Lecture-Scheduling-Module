@@ -12,7 +12,7 @@ export const getcourses = (dispatch) => {
             'Authorization': `${token}`
         }
     };
-    return axios.get(`http://localhost:8080/courses/getcourses`, config)
+    return axios.get(`https://online-backend-b35y.onrender.com/courses/getcourses`, config)
         .then((res) => {
       
             dispatch({ type: COURSE_SUCCESS, payload: { data:res.data.data } });
@@ -33,7 +33,7 @@ export const createcourses = (userData) => (dispatch) => {
         }
     };
     dispatch({ type: COURSE_REQUEST });  
-    return axios.post("http://localhost:8080/courses/addcourses", userData, config)
+    return axios.post("https://online-backend-b35y.onrender.com/courses/addcourses", userData, config)
         .then((res) => {
             dispatch({type: COURSE_SUCCESS, payload: res.data.message});
         })
@@ -46,7 +46,7 @@ export const createcourses = (userData) => (dispatch) => {
 
 export const getinstructors=(dispatch)=>{
     dispatch({ type: COURSE_REQUEST });  
-    return axios.get("http://localhost:8080/user/getinstructors")
+    return axios.get("https://online-backend-b35y.onrender.com/user/getinstructors")
         .then((res) => {
             console.log(res.data.data)
             dispatch({type: COURSE_SUCCESS_INST, payload: res.data.data});
@@ -65,7 +65,7 @@ export const assignlecture = (userData) => (dispatch) => {
         }
     };
     dispatch({ type: COURSE_REQUEST });  
-    return axios.post("http://localhost:8080/courses/assignlectures", userData, config)
+    return axios.post("https://online-backend-b35y.onrender.com/courses/assignlectures", userData, config)
         .then((res) => {
             console.log(res.data.message)
             dispatch({type: COURSE_SUCCESS_ASSIGN, payload: res.data.message});

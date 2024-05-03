@@ -20,7 +20,7 @@ const InstructorPannel = () => {
     <div>
       <Navbar2 />
       <h1>Instructor Panel</h1>
-      <h2 style={{color:"brown"}}>{user.name}'s Schedule / Lectures Allocated</h2> {/* Modified heading */}
+      <h2 style={{color:"brown"}}>{user.name}'s Schedule / Lectures Allocated</h2> 
       <div className="lecture-table-container">
         <table className="lecture-table">
           <thead>
