@@ -1,0 +1,44 @@
+
+.adminpanel {
+    padding: 0px;
+  }
+  
+  
+  
+  .getcourses {
+    background-color: lightgray;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    margin-right: 1%;
+    width: 25%;
+    height: 500px;  
+  }
+  
+  .getcourses label {
+    font-weight: bold;
+  }
+  
+  .getcourses input[type='text'],
+  .getcourses textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .getcourses button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .getcourses button:hover {
+    background-color: #0056b3;
+  }
+  

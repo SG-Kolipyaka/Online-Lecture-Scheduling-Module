@@ -7,7 +7,6 @@ export const login = (userData) => (dispatch) => {
     dispatch({ type: LOGIN_REQUEST });
     return axios.post("http://localhost:8080/user/login", userData)
         .then((res) => {
-            console.log(res)
             if (res.data.role === "admin") {
                 dispatch({ type: LOGIN_SUCCESS, payload: { token: res.data.token, isAdmin: true } });
                 localStorage.setItem("token", res.data.token);
@@ -31,7 +30,6 @@ export const signup = (userData) => (dispatch) => {
     dispatch({ type: SIGNUP_REQUEST });
     return axios.post("http://localhost:8080/user/register", userData)
         .then((res) => {
-        console.log(res)
         dispatch({type:SIGNUP_SUCCESS,payload:res.data.message})
         })
         .catch((err) => {
@@ -54,7 +52,6 @@ export const assignedinstructor = (id) => (dispatch) => {
 
     return axios.get(`http://localhost:8080/user/assigned/${id}`, config)
         .then((res) => {
-            console.log(res);
             dispatch({ type: INST_SUCCESS, payload: res.data.data });
         })
         .catch((err) => {

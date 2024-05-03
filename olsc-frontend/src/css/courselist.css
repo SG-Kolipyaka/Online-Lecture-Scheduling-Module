@@ -1,0 +1,37 @@
+
+table {
+    width: 90%;
+    border: none;
+    margin-bottom: 20px;
+    margin-left: 20px;
+  }
+  
+  th {
+    background-color: darkgrey;
+    font-weight: bold;
+    text-align: left;
+    padding: 10px;
+  }
+  
+
+  td {
+    border: 1px solid darkgrey;
+    padding: 10px;
+  }
+  
+
+ 
+  tbody tr:hover {
+    background-color: whitesmoke;
+  }
+  
+
+  td img {
+    width: 50px;
+  }
+  
+
+  td {
+    text-align: center;
+  }
+  

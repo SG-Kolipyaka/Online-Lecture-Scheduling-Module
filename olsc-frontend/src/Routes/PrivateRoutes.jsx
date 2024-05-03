@@ -10,7 +10,7 @@ const PrivateRoutes = ({ children }) => {
     if (isAdmin) {
         <Navigate to="/adminpanel"  />;
         return children
-    } else if (isInstructor) {
+    } else if (isInstructor) { 
         <Navigate to={`/${user._id}`} />;
         return children
     } else {

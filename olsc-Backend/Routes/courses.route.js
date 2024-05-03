@@ -68,7 +68,7 @@ courseRouter.get("/getcourses",auth,async(req,res)=>{
     try{
 if(role=="admin"){
     const courses=await CourseModel.find()
-res.status(200).send({message:"Courses Fetched Successfully",data:courses})
+res.status(200).send(courses)
 }else{
     res.status(200).send({message:"You are instructor so you dont have the access to this route"})  
 }
