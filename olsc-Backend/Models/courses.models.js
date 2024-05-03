@@ -18,7 +18,6 @@ const CourseModel = mongoose.model("Course", CourseSchema);
 const AssignedSchema = mongoose.Schema({
     name: { type: String },
     instructor: { type: String },
-    image: { type: String },
     instructorId: { type: String },
     lecture: { type: String },
     date: { type: Date } 
