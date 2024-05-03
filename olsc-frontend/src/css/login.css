@@ -1,0 +1,43 @@
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 50px;
+    border: 1px solid silver;
+    border-radius: 20px;
+    background-color: lightgrey;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .form {
+    margin-bottom: 20px;
+  }
+  
+  .form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid silver;
+    border-radius: 5px;
+  }
+  
+  .form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: blue;
+    color: wheat;
+    cursor: pointer;
+  }
+  
+  .form button:hover {
+    background-color: darkblue;
+  }
+  

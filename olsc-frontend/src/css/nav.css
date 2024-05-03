@@ -1,0 +1,21 @@
+.main-nav{
+    display: grid;
+    grid-template-columns: 7rem 1fr 3fr 1fr 7rem;
+    width: 100%;
+    height: 50px;
+    background-color: lightsteelblue;
+    margin-bottom: 20px;
+} 
+
+.menubar {
+    display:flex ;
+    justify-content:space-evenly;
+     padding:10px;
+     align-items: center;
+}
+
+
+.menubar{
+    grid-column: 3/4;
+}
+

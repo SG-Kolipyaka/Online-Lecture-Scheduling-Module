@@ -65,10 +65,10 @@ userRouter.post("/login",async(req,res)=>{
                 if(result){
                     if(finduser.role=="admin"){
                         const token=jwt.sign({admin:finduser.name,adminId:finduser._id,role:finduser.role},"user");
-                        res.status(200).send({message:"Login Successfully","token":token,role:"admin"})
+                        res.status(200).send({message:"Login Successfully","token":token,role:"admin",admin:finduser})
                     }else if(finduser.role=="instructor"){
                         const token=jwt.sign({instructor:finduser.name,instructorId:finduser._id,role:finduser.role},"user");
-                        res.status(200).send({message:"Login Successfully","token":token,role:"instructor"})
+                        res.status(200).send({message:"Login Successfully","token":token,role:"instructor",instructor:finduser})
                     }
                    
                 }else{

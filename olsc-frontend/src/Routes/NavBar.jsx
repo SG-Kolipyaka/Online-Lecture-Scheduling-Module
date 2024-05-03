@@ -1,21 +1,30 @@
 import { NavLink } from "react-router-dom";
+import "../css/nav.css"
+import image1 from "../images/image1.png";
 
-const Links=[
+const Link=[
     {path:"/login",title:"Login"},
     {path:"/Signup",title:"SignUP"},
 ]
+const activelink={textDecoration:"none", color:"brown"}
+const defelink={textDecoration:"none", color:"black"}
 
-
-
-const NavBar = () => {
+const Navbar = () => {
   return (
-    <div >
-        {Links.map((el)=>{
-            return <NavLink style={{gap:"30px",padding:"20px"}}
-             key={el.path} to={el.path}>{el.title}</NavLink>
-        })}
-    </div>
+<>
+<nav className='main-nav'>
+  <img width={"70%"} height={"50px"} style={{marginLeft:"20px"}} src={image1} alt="" />
+<div className='menubar'>
+    {Link.map((el)=>{
+    return(
+            <NavLink style={({isActive})=>{return isActive?activelink :defelink}} to={el.path}>{el.title}</NavLink>
+    )
+})}
+</div>
+</nav>
+</>
   )
 }
 
-export default NavBar
+
+export default Navbar

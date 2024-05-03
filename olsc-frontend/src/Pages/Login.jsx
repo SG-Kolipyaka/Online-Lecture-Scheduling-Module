@@ -1,46 +1,60 @@
-import React from 'react'
-import { login } from '../Redux/AuthReducer/action'
-import {useDispatch,useSelector} from "react-redux"
-import { useState } from 'react'
-import { Navigate } from 'react-router-dom'
+import React from 'react';
+import { login } from '../Redux/AuthReducer/action';
+import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
+import Navbar from '../Routes/NavBar';
+import '../css/login.css'; 
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const Login = () => {
-    const [email,setEmail]=useState("")
-    const [password,setPassword]=useState("")
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const isAdmin = localStorage.getItem('isAdmin');
+  const isInstructor = localStorage.getItem('isInstructor');
+  const user = JSON.parse(localStorage.getItem('user'));
+  const navigate=useNavigate()
+  const location =useLocation()
+  const dispatch = useDispatch();
 
-    const dispatch=useDispatch()
+  const handleSubmit = e => {
+    e.preventDefault();
+    const userData = {
+      email,
+      password
+    };
+    dispatch(login(userData)).then(()=> navigate(location.state,{replace:true}));
+  };
+  
 
-    const state1=useSelector((store)=> store.authreducer)
-
-    const handelSubmit=(e)=>{
-        e.preventDefault() 
-        const userData={
-            email,password
-        }
-        dispatch(login(userData))
-
-    }
-
-if(state1.isAdmin){
-return <Navigate to={"/adminpanel"}/>
-}else if(state1.isInstructor){
-return <Navigate to={"/"}/>
-}else{
-  return (
-    <div>
-        <form onSubmit={handelSubmit}>
-            <h1>User Login</h1>
-            <h3>{state1.isAdmin?"Login Successful":"Please Login "}</h3>
-            <h3>{state1.token}</h3>
-            <input type="text" placeholder='enter your email' value={email} onChange={(e)=>setEmail(e.target.value)}/>
-            <br />
-            <input type="password" placeholder='enter your password' value={password} onChange={(e)=>setPassword(e.target.value)}/>
-<button>Login</button>
-
+  if (isAdmin) {
+    return <Navigate to={'/adminpanel'} />;
+  } else if (isInstructor) {
+    return <Navigate to={`/${user._id}`} />;
+  } else {
+    return (
+      <>
+      <Navbar/>
+      <h2 style={{color:"brown"}}>Welcome to IdeaMagix LMS <h5 style={{color:"black"}}>Login as Instructor or Admin</h5> </h2>
+      <div className="container">
+        <form onSubmit={handleSubmit}>
+          <h1>User Login</h1>
+          <div className="form">
+            <label>Email:</label>
+            <input type="text" placeholder="Enter your email" value={email} onChange={e => setEmail(e.target.value)} />
+          </div>
+          <div className="form">
+            <label>Password:</label>
+            <input type="password" placeholder="Enter your password" value={password} onChange={e => setPassword(e.target.value)} />
+          </div>
+          <div className="form">
+            <button>Login</button>
+          </div>
         </form>
-    </div>
-  )
-}
-}
+      </div>
+      </>
+    );
+  }
+};
 
-export default Login
+export default Login;

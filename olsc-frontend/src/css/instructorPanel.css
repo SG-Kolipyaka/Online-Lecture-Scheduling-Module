@@ -1,0 +1,30 @@
+/* instructorPanel.css */
+
+.lecture-table-container {
+    margin-top: 20px;
+  }
+  
+  .lecture-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .lecture-table th,
+  .lecture-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .lecture-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .lecture-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .lecture-table tbody tr:hover {
+    background-color: #ddd;
+  }
+  
